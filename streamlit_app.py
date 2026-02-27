@@ -7,6 +7,7 @@ from pathlib import Path
 
 import av
 import streamlit as st
+from streamlit.runtime.scriptrunner import get_script_run_ctx
 from streamlit_webrtc import VideoProcessorBase, WebRtcMode, webrtc_streamer
 from ultralytics import YOLO
 
@@ -39,6 +40,13 @@ class YoloVideoProcessor(VideoProcessorBase):
 
 
 def main() -> None:
+    if get_script_run_ctx() is None:
+        print(
+            "This app must be started with 'streamlit run streamlit_app.py' "
+            "so Streamlit can create a session context."
+        )
+        return
+
     st.set_page_config(page_title="YOLOv8 USB Camera", layout="wide")
     st.title("YOLOv8 USB Camera Object Detection")
     st.write("Start the camera stream to run live detection in your browser.")

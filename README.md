@@ -62,7 +62,11 @@ python camera_yolov8.py --camera-index 1 --model yolov8s.pt --conf 0.4
 
 1. Open this folder in PyCharm.
 2. Configure the project interpreter to use your `.venv`.
-3. Run either:
-   - `streamlit run streamlit_app.py` (in terminal), or
-   - `camera_yolov8.py` as a Python run configuration.
-4. Make sure your USB camera is connected and not already in use.
+3. For Streamlit, create a **Run Configuration** of type **Python** with:
+   - Script path: `<venv>/Scripts/streamlit.exe` (Windows) or `<venv>/bin/streamlit` (Linux/macOS)
+   - Parameters: `run streamlit_app.py`
+   - Working directory: project root
+4. Alternatively, run Streamlit in the PyCharm terminal:
+   - `streamlit run streamlit_app.py`
+5. `camera_yolov8.py` can still be run as a normal Python run configuration.
+6. Make sure your USB camera is connected and not already in use.
