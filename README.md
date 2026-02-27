@@ -1,6 +1,9 @@
 # USB Camera + YOLOv8 Object Detection
 
-This project opens a USB camera, runs YOLOv8 object detection, and draws boxes/labels on each frame in real time.
+This project provides two ways to run YOLOv8 object detection with a USB camera:
+
+1. **Streamlit web interface** (recommended)
+2. **Desktop OpenCV window script**
 
 ## 1) Create and activate a virtual environment
 
@@ -22,7 +25,21 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-## 3) Run detection
+## 3) Run Streamlit interface (web UI)
+
+```bash
+streamlit run streamlit_app.py
+```
+
+Then open the local URL shown by Streamlit (usually `http://localhost:8501`), allow camera permissions, and start the stream.
+
+Streamlit settings (left sidebar):
+
+- `Model path` (default `yolov8n.pt`)
+- `Confidence threshold`
+- `Inference image size`
+
+## 4) (Optional) Run desktop script
 
 ```bash
 python camera_yolov8.py
@@ -45,7 +62,7 @@ python camera_yolov8.py --camera-index 1 --model yolov8s.pt --conf 0.4
 
 1. Open this folder in PyCharm.
 2. Configure the project interpreter to use your `.venv`.
-3. Run `camera_yolov8.py` from the IDE.
+3. Run either:
+   - `streamlit run streamlit_app.py` (in terminal), or
+   - `camera_yolov8.py` as a Python run configuration.
 4. Make sure your USB camera is connected and not already in use.
-
-Press **q** in the preview window to stop the app.
